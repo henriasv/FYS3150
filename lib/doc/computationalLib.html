@@ -1,0 +1,476 @@
+
+<!doctype html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module computationalLib</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>computationalLib</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/mn/felt/u2/magnarkb/sommerjobb/FYS3150/FYS3150/doc/computationalLib.py">/mn/felt/u2/magnarkb/sommerjobb/FYS3150/FYS3150/doc/computationalLib.py</a></font></td></tr></table>
+    <p><tt>#&nbsp;-*-&nbsp;coding:&nbsp;utf-8&nbsp;-*-</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#fffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="math.html">math</a><br>
+</td><td width="25%" valign=top><a href="numpy.html">numpy</a><br>
+</td><td width="25%" valign=top><a href="os.html">os</a><br>
+</td><td width="25%" valign=top><a href="sys.html">sys</a><br>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="computationalLib.html#pylib">pylib</a>
+</font></dt><dt><font face="helvetica, arial"><a href="exceptions.html#Exception">exceptions.Exception</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="computationalLib.html#MatrixError">MatrixError</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="computationalLib.html#MatrixNotSquareError">MatrixNotSquareError</a>
+</font></dt><dt><font face="helvetica, arial"><a href="computationalLib.html#MatrixNotSymetricError">MatrixNotSymetricError</a>
+</font></dt><dt><font face="helvetica, arial"><a href="computationalLib.html#SingularError">SingularError</a>
+</font></dt><dt><font face="helvetica, arial"><a href="computationalLib.html#SizeError">SizeError</a>
+</font></dt></dl>
+</dd>
+</dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="MatrixError">class <strong>MatrixError</strong></a>(<a href="exceptions.html#Exception">exceptions.Exception</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>General&nbsp;class&nbsp;for&nbsp;(mathematical)&nbsp;errors&nbsp;in&nbsp;matrices&nbsp;passed.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="MatrixError-__init__"><strong>__init__</strong></a>(self, A)</dt><dd><tt>Input:<br>
+-&nbsp;A:&nbsp;The&nbsp;matrix&nbsp;which&nbsp;has&nbsp;an&nbsp;error</tt></dd></dl>
+
+<dl><dt><a name="MatrixError-__str__"><strong>__str__</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="exceptions.html#Exception">exceptions.Exception</a>:<br>
+<dl><dt><a name="MatrixError-__getitem__"><strong>__getitem__</strong></a>(...)</dt></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="MatrixNotSquareError">class <strong>MatrixNotSquareError</strong></a>(<a href="computationalLib.html#MatrixError">MatrixError</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Raised&nbsp;by&nbsp;a&nbsp;method&nbsp;requiring&nbsp;a&nbsp;square&nbsp;matrix&nbsp;if&nbsp;it&nbsp;is&nbsp;not&nbsp;square.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="computationalLib.html#MatrixNotSquareError">MatrixNotSquareError</a></dd>
+<dd><a href="computationalLib.html#MatrixError">MatrixError</a></dd>
+<dd><a href="exceptions.html#Exception">exceptions.Exception</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="MatrixNotSquareError-__str__"><strong>__str__</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="computationalLib.html#MatrixError">MatrixError</a>:<br>
+<dl><dt><a name="MatrixNotSquareError-__init__"><strong>__init__</strong></a>(self, A)</dt><dd><tt>Input:<br>
+-&nbsp;A:&nbsp;The&nbsp;matrix&nbsp;which&nbsp;has&nbsp;an&nbsp;error</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="exceptions.html#Exception">exceptions.Exception</a>:<br>
+<dl><dt><a name="MatrixNotSquareError-__getitem__"><strong>__getitem__</strong></a>(...)</dt></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="MatrixNotSymetricError">class <strong>MatrixNotSymetricError</strong></a>(<a href="computationalLib.html#MatrixError">MatrixError</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Raised&nbsp;by&nbsp;a&nbsp;method&nbsp;requiring&nbsp;a&nbsp;symetric&nbsp;matrix&nbsp;if&nbsp;it&nbsp;is&nbsp;not&nbsp;symetric.<br>
+Always&nbsp;raise&nbsp;<a href="#MatrixNotSquareError">MatrixNotSquareError</a>&nbsp;before&nbsp;this&nbsp;one&nbsp;(a&nbsp;non-square&nbsp;matrix&nbsp;can't&nbsp;be&nbsp;symetric&nbsp;anyway).<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="computationalLib.html#MatrixNotSymetricError">MatrixNotSymetricError</a></dd>
+<dd><a href="computationalLib.html#MatrixError">MatrixError</a></dd>
+<dd><a href="exceptions.html#Exception">exceptions.Exception</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="MatrixNotSymetricError-__init__"><strong>__init__</strong></a>(self, A, delta)</dt><dd><tt>Input:<br>
+&nbsp;-&nbsp;A:&nbsp;The&nbsp;matrix&nbsp;which&nbsp;has&nbsp;an&nbsp;error<br>
+&nbsp;-&nbsp;delta:&nbsp;sum&nbsp;of&nbsp;abs(Aij-Aji)</tt></dd></dl>
+
+<dl><dt><a name="MatrixNotSymetricError-__str__"><strong>__str__</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="exceptions.html#Exception">exceptions.Exception</a>:<br>
+<dl><dt><a name="MatrixNotSymetricError-__getitem__"><strong>__getitem__</strong></a>(...)</dt></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="SingularError">class <strong>SingularError</strong></a>(<a href="computationalLib.html#MatrixError">MatrixError</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Raised&nbsp;by&nbsp;numerical&nbsp;functions&nbsp;if&nbsp;a&nbsp;matrix&nbsp;is&nbsp;singular<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="computationalLib.html#SingularError">SingularError</a></dd>
+<dd><a href="computationalLib.html#MatrixError">MatrixError</a></dd>
+<dd><a href="exceptions.html#Exception">exceptions.Exception</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="SingularError-__str__"><strong>__str__</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="computationalLib.html#MatrixError">MatrixError</a>:<br>
+<dl><dt><a name="SingularError-__init__"><strong>__init__</strong></a>(self, A)</dt><dd><tt>Input:<br>
+-&nbsp;A:&nbsp;The&nbsp;matrix&nbsp;which&nbsp;has&nbsp;an&nbsp;error</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="exceptions.html#Exception">exceptions.Exception</a>:<br>
+<dl><dt><a name="SingularError-__getitem__"><strong>__getitem__</strong></a>(...)</dt></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="SizeError">class <strong>SizeError</strong></a>(<a href="computationalLib.html#MatrixError">MatrixError</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Raised&nbsp;if&nbsp;a&nbsp;set&nbsp;of&nbsp;matrices/vectors&nbsp;that&nbsp;should&nbsp;have&nbsp;the&nbsp;same&nbsp;size<br>
+have&nbsp;different&nbsp;sizes<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="computationalLib.html#SizeError">SizeError</a></dd>
+<dd><a href="computationalLib.html#MatrixError">MatrixError</a></dd>
+<dd><a href="exceptions.html#Exception">exceptions.Exception</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="SizeError-__init__"><strong>__init__</strong></a>(self, message)</dt><dd><tt>Input:<br>
+&nbsp;-&nbsp;message:&nbsp;String&nbsp;containing&nbsp;relevant&nbsp;info&nbsp;about&nbsp;the&nbsp;sizes&nbsp;and&nbsp;names</tt></dd></dl>
+
+<dl><dt><a name="SizeError-__str__"><strong>__str__</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="exceptions.html#Exception">exceptions.Exception</a>:<br>
+<dl><dt><a name="SizeError-__getitem__"><strong>__getitem__</strong></a>(...)</dt></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="pylib">class <strong>pylib</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Implements&nbsp;many&nbsp;of&nbsp;the&nbsp;functions&nbsp;found&nbsp;in&nbsp;M.H.Jensens<br>
+c++-library,&nbsp;used&nbsp;in&nbsp;Computational&nbsp;Physics.&nbsp;This&nbsp;is&nbsp;again&nbsp;heavily&nbsp;based<br>
+on&nbsp;what&nbsp;is&nbsp;found&nbsp;in&nbsp;Numerical&nbsp;recipes.<br>
+&nbsp;<br>
+Ported&nbsp;to&nbsp;Python&nbsp;by<br>
+Kyrre&nbsp;Ness&nbsp;Sjøbæk&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(k&nbsp;DÅTT&nbsp;n&nbsp;DÅTT&nbsp;sjobak&nbsp;ÆTT&nbsp;fys&nbsp;DÅTT&nbsp;uio&nbsp;DÅTT&nbsp;no),<br>
+Magnar&nbsp;Kopangen&nbsp;Bugge&nbsp;&nbsp;(magnarkb&nbsp;ÆTT&nbsp;student&nbsp;DÅTT&nbsp;matnat&nbsp;DÅTT&nbsp;uio&nbsp;DÅTT&nbsp;no),<br>
+Marit&nbsp;Sandstad&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(marit&nbsp;DÅTT&nbsp;sandstad&nbsp;ÆTT&nbsp;fys&nbsp;DÅTT&nbsp;uio&nbsp;DÅTT&nbsp;no)<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="pylib-__init__"><strong>__init__</strong></a>(self, inputcheck<font color="#909090">=False</font>, cpp<font color="#909090">=False</font>)</dt><dd><tt>Constructor,<br>
+Set&nbsp;inputcheck&nbsp;=&nbsp;True&nbsp;in&nbsp;order&nbsp;to&nbsp;do&nbsp;input&nbsp;checking&nbsp;(debug,&nbsp;slower)<br>
+Set&nbsp;cpp&nbsp;=&nbsp;True&nbsp;to&nbsp;use&nbsp;compiled&nbsp;versions&nbsp;of&nbsp;the&nbsp;functions&nbsp;where&nbsp;aviable</tt></dd></dl>
+
+<dl><dt><a name="pylib-checkSquare"><strong>checkSquare</strong></a>(self, A)</dt><dd><tt>Checks&nbsp;if&nbsp;A&nbsp;is&nbsp;square,&nbsp;if&nbsp;not&nbsp;it&nbsp;raises&nbsp;exeption&nbsp;<a href="#MatrixNotSquareError">MatrixNotSquareError</a>.<br>
+Called&nbsp;by&nbsp;relevant&nbsp;methods&nbsp;if&nbsp;self.<strong>inputcheck</strong>=True</tt></dd></dl>
+
+<dl><dt><a name="pylib-checkSymetric"><strong>checkSymetric</strong></a>(self, A)</dt><dd><tt>Checks&nbsp;if&nbsp;A&nbsp;is&nbsp;symetric,&nbsp;if&nbsp;not&nbsp;it&nbsp;raises&nbsp;exception&nbsp;<a href="#MatrixNotSymetricError">MatrixNotSymetricError</a>.<br>
+Called&nbsp;by&nbsp;relevant&nbsp;methods&nbsp;if&nbsp;self.<strong>inputcheck</strong>=True.&nbsp;Always&nbsp;call&nbsp;checkSquare&nbsp;first!</tt></dd></dl>
+
+<dl><dt><a name="pylib-euler"><strong>euler</strong></a>(self, y0, t0, te, N, deriv, filename<font color="#909090">=None</font>)</dt><dd><tt>General&nbsp;eulers&nbsp;method&nbsp;driver&nbsp;and&nbsp;stepper&nbsp;for<br>
+N&nbsp;coupled&nbsp;differential&nbsp;eq's,<br>
+fixed&nbsp;stepsize<br>
+&nbsp;<br>
+Input:<br>
+&nbsp;-&nbsp;y0:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vector&nbsp;containing&nbsp;initial&nbsp;values&nbsp;for&nbsp;y<br>
+&nbsp;-&nbsp;t0:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Initial&nbsp;time<br>
+&nbsp;-&nbsp;te:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ending&nbsp;time<br>
+&nbsp;-&nbsp;N:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;steps<br>
+&nbsp;-&nbsp;deriv:&nbsp;&nbsp;&nbsp;&nbsp;See&nbsp;rk4_step<br>
+&nbsp;-&nbsp;filename:&nbsp;Optional,&nbsp;use&nbsp;if&nbsp;you&nbsp;want&nbsp;to&nbsp;write<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data&nbsp;to&nbsp;file&nbsp;at&nbsp;each&nbsp;step.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Format&nbsp;used:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t&nbsp;y[0]&nbsp;y[1]&nbsp;...&nbsp;(%10.15E)<br>
+&nbsp;<br>
+Output:<br>
+If&nbsp;filename=None,&nbsp;return&nbsp;tuple&nbsp;containing:<br>
+&nbsp;-&nbsp;time:&nbsp;&nbsp;Array&nbsp;of&nbsp;times&nbsp;at&nbsp;which&nbsp;it&nbsp;has&nbsp;iterated&nbsp;over<br>
+&nbsp;-&nbsp;yout:&nbsp;&nbsp;N*len(y0)&nbsp;numpy&nbsp;array&nbsp;containing&nbsp;y&nbsp;for&nbsp;each&nbsp;timestep<br>
+If&nbsp;filename&nbsp;specified,&nbsp;None&nbsp;is&nbsp;returned.</tt></dd></dl>
+
+<dl><dt><a name="pylib-gausLegendre"><strong>gausLegendre</strong></a>(self, a, b, N)</dt><dd><tt>Used&nbsp;to&nbsp;calculate&nbsp;weights&nbsp;and&nbsp;meshpoints&nbsp;for<br>
+gaus-legendre&nbsp;quadrature.<br>
+&nbsp;<br>
+Input:<br>
+-&nbsp;a,&nbsp;b:&nbsp;Limits&nbsp;of&nbsp;integration<br>
+-&nbsp;N:&nbsp;&nbsp;&nbsp;&nbsp;Integration&nbsp;points<br>
+&nbsp;<br>
+Returns:<br>
+-&nbsp;Numpy&nbsp;array&nbsp;of&nbsp;meshpoints<br>
+-&nbsp;Numpy&nbsp;array&nbsp;of&nbsp;weights<br>
+&nbsp;<br>
+Method&nbsp;heavily&nbsp;inspired&nbsp;of&nbsp;gauleg()&nbsp;from&nbsp;Numerical&nbsp;recipes<br>
+Note:&nbsp;This&nbsp;is&nbsp;not&nbsp;the&nbsp;same&nbsp;method&nbsp;as&nbsp;described&nbsp;in&nbsp;compendium;<br>
+see&nbsp;NR&nbsp;for&nbsp;more&nbsp;info!</tt></dd></dl>
+
+<dl><dt><a name="pylib-gausLegendre_cpp"><strong>gausLegendre_cpp</strong></a>(self, a, b, x, w, N)</dt><dd><tt>C++&nbsp;backend&nbsp;for&nbsp;gausLegendre,&nbsp;using&nbsp;routine<br>
+in&nbsp;the&nbsp;library</tt></dd></dl>
+
+<dl><dt><a name="pylib-gausLegendre_python"><strong>gausLegendre_python</strong></a>(self, a, b, x, w, N)</dt><dd><tt>Python&nbsp;backend&nbsp;for&nbsp;gausLegendre</tt></dd></dl>
+
+<dl><dt><a name="pylib-jacobi"><strong>jacobi</strong></a>(self, A, inaccurate<font color="#909090">=False</font>)</dt><dd><tt>Computes&nbsp;all&nbsp;eigenvalues&nbsp;and&nbsp;eigenvectors&nbsp;of&nbsp;a&nbsp;real&nbsp;symetric&nbsp;matrix&nbsp;A,<br>
+using&nbsp;Jacobi&nbsp;transformations.&nbsp;Note:&nbsp;This&nbsp;is&nbsp;the&nbsp;cyclic&nbsp;Jacobi&nbsp;method,<br>
+not&nbsp;the&nbsp;original&nbsp;one.&nbsp;See&nbsp;Numerical&nbsp;recipes!<br>
+&nbsp;<br>
+Input:<br>
+&nbsp;-&nbsp;A:&nbsp;Square&nbsp;symetric&nbsp;matrix&nbsp;which&nbsp;is&nbsp;to&nbsp;be&nbsp;diagonalized.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lower&nbsp;part&nbsp;(below&nbsp;diag)&nbsp;left&nbsp;untouched,&nbsp;upper&nbsp;part&nbsp;destroyed<br>
+-&nbsp;inaccurate:&nbsp;optional&nbsp;bool&nbsp;value&nbsp;to&nbsp;decide&nbsp;the&nbsp;degree&nbsp;of&nbsp;accuracy<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;of&nbsp;the&nbsp;method.&nbsp;default&nbsp;value&nbsp;is&nbsp;False.&nbsp;<br>
+&nbsp;<br>
+Output:<br>
+&nbsp;-&nbsp;d:&nbsp;&nbsp;&nbsp;&nbsp;Vector&nbsp;containing&nbsp;the&nbsp;eigenvalues&nbsp;of&nbsp;A<br>
+&nbsp;-&nbsp;v:&nbsp;&nbsp;&nbsp;&nbsp;Matrix&nbsp;with&nbsp;columns&nbsp;representing&nbsp;the&nbsp;eigenvectors&nbsp;of&nbsp;A&nbsp;(normalized)<br>
+&nbsp;-&nbsp;nrot:&nbsp;Number&nbsp;of&nbsp;Jacobi&nbsp;rotations&nbsp;required</tt></dd></dl>
+
+<dl><dt><a name="pylib-jacobi_cpp"><strong>jacobi_cpp</strong></a>(self, A, d, v, n, nrot)</dt><dd><tt>C++&nbsp;backend&nbsp;for&nbsp;jacobi,&nbsp;using&nbsp;routine<br>
+in&nbsp;the&nbsp;library</tt></dd></dl>
+
+<dl><dt><a name="pylib-jacobi_python"><strong>jacobi_python</strong></a>(self, A, d, v, n, nrot, inaccurate)</dt><dd><tt>Python&nbsp;backend&nbsp;for&nbsp;jacobi</tt></dd></dl>
+
+<dl><dt><a name="pylib-jacobi_rot"><strong>jacobi_rot</strong></a>(self, A, s, tau, i, j, k, l)</dt><dd><tt>Sub-routine&nbsp;used&nbsp;by&nbsp;<a href="#pylib-jacobi">jacobi</a>()&nbsp;to&nbsp;do&nbsp;one&nbsp;part&nbsp;of&nbsp;a&nbsp;rotation<br>
+&nbsp;<br>
+Input:<br>
+&nbsp;-&nbsp;A:&nbsp;&nbsp;&nbsp;Matrix&nbsp;to&nbsp;be&nbsp;sub-rotated<br>
+&nbsp;-&nbsp;s:&nbsp;&nbsp;&nbsp;sine&nbsp;of&nbsp;rotation&nbsp;angle&nbsp;phi<br>
+&nbsp;-&nbsp;tau:&nbsp;Tau&nbsp;(helper&nbsp;quantity)<br>
+&nbsp;-&nbsp;i,j,k,l:&nbsp;"coordninates"&nbsp;in&nbsp;matrix&nbsp;to&nbsp;rotate</tt></dd></dl>
+
+<dl><dt><a name="pylib-luBackSubst"><strong>luBackSubst</strong></a>(self, A, index, b)</dt><dd><tt>Back-substitution&nbsp;of&nbsp;LU-decomposed&nbsp;matrix<br>
+Solves&nbsp;the&nbsp;set&nbsp;of&nbsp;linear&nbsp;equations&nbsp;A&nbsp;x&nbsp;=&nbsp;b&nbsp;of&nbsp;dimension&nbsp;n<br>
+The&nbsp;input&nbsp;A&nbsp;is&nbsp;the&nbsp;LU-decomposed&nbsp;version&nbsp;of&nbsp;A&nbsp;obtained&nbsp;from<br>
+<a href="#pylib">pylib</a>.<a href="#pylib-luDecomp">luDecomp</a>(),<br>
+index&nbsp;is&nbsp;the&nbsp;pivoting&nbsp;permutation&nbsp;vector&nbsp;obtained<br>
+from&nbsp;the&nbsp;same&nbsp;function,&nbsp;and<br>
+b&nbsp;is&nbsp;the&nbsp;right-hand-side&nbsp;vector&nbsp;b&nbsp;as&nbsp;a&nbsp;numpy&nbsp;array.<br>
+&nbsp;<br>
+Returns&nbsp;the&nbsp;solution&nbsp;x&nbsp;as&nbsp;an&nbsp;numpy&nbsp;array.<br>
+&nbsp;<br>
+BIG&nbsp;FAT&nbsp;WARNING:&nbsp;Destroys&nbsp;input&nbsp;b&nbsp;in&nbsp;calling&nbsp;program!<br>
+(b&nbsp;is&nbsp;set&nbsp;equal&nbsp;to&nbsp;x&nbsp;after&nbsp;calculation&nbsp;has&nbsp;finished)<br>
+Send&nbsp;it&nbsp;a&nbsp;copy&nbsp;if&nbsp;this&nbsp;is&nbsp;bad.</tt></dd></dl>
+
+<dl><dt><a name="pylib-luBackSubst_cpp"><strong>luBackSubst_cpp</strong></a>(self, A, N, index, b)</dt><dd><tt>C++&nbsp;backend&nbsp;for&nbsp;luDecomp,&nbsp;using&nbsp;routine<br>
+in&nbsp;the&nbsp;library</tt></dd></dl>
+
+<dl><dt><a name="pylib-luBackSubst_python"><strong>luBackSubst_python</strong></a>(self, A, N, index, b)</dt><dd><tt>Python&nbsp;backend&nbsp;for&nbsp;luBackSubst</tt></dd></dl>
+
+<dl><dt><a name="pylib-luDecomp"><strong>luDecomp</strong></a>(self, A)</dt><dd><tt>LU-decomposes&nbsp;a&nbsp;matrix&nbsp;A,&nbsp;and&nbsp;returns&nbsp;the&nbsp;LU-decomposition&nbsp;of&nbsp;a<br>
+rowwise&nbsp;permutation&nbsp;of&nbsp;A.&nbsp;Used&nbsp;in&nbsp;combination&nbsp;with&nbsp;luBackSubst&nbsp;function<br>
+to&nbsp;solve&nbsp;an&nbsp;equation-set&nbsp;Ax=B.<br>
+&nbsp;<br>
+Returns:&nbsp;A&nbsp;tuple&nbsp;containing<br>
+-&nbsp;LU-decomposed&nbsp;matrix&nbsp;(upper&nbsp;part&nbsp;and&nbsp;diagonal&nbsp;=&nbsp;matrix&nbsp;U,&nbsp;lower&nbsp;part&nbsp;=&nbsp;matrix&nbsp;L)<br>
+-&nbsp;Array&nbsp;which&nbsp;records&nbsp;the&nbsp;row&nbsp;permutation&nbsp;from&nbsp;partial&nbsp;pivoting<br>
+-&nbsp;Number&nbsp;which&nbsp;depends&nbsp;on&nbsp;the&nbsp;number&nbsp;of&nbsp;row&nbsp;interchanges&nbsp;was&nbsp;even&nbsp;(+1)&nbsp;or&nbsp;odd&nbsp;(-1)<br>
+&nbsp;<br>
+BIG&nbsp;FAT&nbsp;WARNING:&nbsp;Destroys&nbsp;input&nbsp;A&nbsp;in&nbsp;calling&nbsp;program!<br>
+(A&nbsp;is&nbsp;set&nbsp;equal&nbsp;to&nbsp;the&nbsp;returned&nbsp;LU-decomposed&nbsp;matrix)<br>
+Send&nbsp;it&nbsp;a&nbsp;copy&nbsp;if&nbsp;this&nbsp;is&nbsp;bad.<br>
+&nbsp;<br>
+This&nbsp;function&nbsp;has&nbsp;the&nbsp;ability&nbsp;to&nbsp;switch&nbsp;between&nbsp;Python&nbsp;and&nbsp;C++&nbsp;backends,&nbsp;see&nbsp;<a href="#pylib-__init__">__init__</a>()</tt></dd></dl>
+
+<dl><dt><a name="pylib-luDecomp_cpp"><strong>luDecomp_cpp</strong></a>(self, A, N, index, d)</dt><dd><tt>C++&nbsp;backend&nbsp;for&nbsp;luDecomp,&nbsp;using&nbsp;routine<br>
+in&nbsp;the&nbsp;library</tt></dd></dl>
+
+<dl><dt><a name="pylib-luDecomp_python"><strong>luDecomp_python</strong></a>(self, A, N, index, d)</dt><dd><tt>Python&nbsp;backend&nbsp;for&nbsp;luDecomp</tt></dd></dl>
+
+<dl><dt><a name="pylib-pythag"><strong>pythag</strong></a>(self, a, b)</dt><dd><tt>Function&nbsp;which&nbsp;computes&nbsp;sqrt(a^2+b^2)&nbsp;without&nbsp;loss&nbsp;of&nbsp;precision.&nbsp;Used&nbsp;by&nbsp;<a href="#pylib-tqli">tqli</a>().</tt></dd></dl>
+
+<dl><dt><a name="pylib-rk2"><strong>rk2</strong></a>(self, y0, t0, te, N, deriv, filename<font color="#909090">=None</font>)</dt><dd><tt>General&nbsp;RK2&nbsp;driver&nbsp;for<br>
+N&nbsp;coupled&nbsp;differential&nbsp;eq's,<br>
+fixed&nbsp;stepsize<br>
+&nbsp;<br>
+Input:<br>
+&nbsp;-&nbsp;y0:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vector&nbsp;containing&nbsp;initial&nbsp;values&nbsp;for&nbsp;y<br>
+&nbsp;-&nbsp;t0:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Initial&nbsp;time<br>
+&nbsp;-&nbsp;te:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ending&nbsp;time<br>
+&nbsp;-&nbsp;N:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;steps<br>
+&nbsp;-&nbsp;deriv:&nbsp;&nbsp;&nbsp;&nbsp;See&nbsp;rk4_step<br>
+&nbsp;-&nbsp;filename:&nbsp;Optional,&nbsp;use&nbsp;if&nbsp;you&nbsp;want&nbsp;to&nbsp;write<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data&nbsp;to&nbsp;file&nbsp;at&nbsp;each&nbsp;step.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Format&nbsp;used:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t&nbsp;y[0]&nbsp;y[1]&nbsp;...&nbsp;(%10.15E)<br>
+&nbsp;<br>
+Output:<br>
+If&nbsp;filename=None,&nbsp;return&nbsp;tuple&nbsp;containing:<br>
+&nbsp;-&nbsp;time:&nbsp;&nbsp;Array&nbsp;of&nbsp;times&nbsp;at&nbsp;which&nbsp;it&nbsp;has&nbsp;iterated&nbsp;over<br>
+&nbsp;-&nbsp;yout:&nbsp;&nbsp;N*len(y0)&nbsp;numpy&nbsp;array&nbsp;containing&nbsp;y&nbsp;for&nbsp;each&nbsp;timestep<br>
+If&nbsp;filename&nbsp;specified,&nbsp;None&nbsp;is&nbsp;returned.</tt></dd></dl>
+
+<dl><dt><a name="pylib-rk2_step"><strong>rk2_step</strong></a>(self, y, t, h, deriv)</dt><dd><tt>General&nbsp;RK2&nbsp;stepper&nbsp;for<br>
+N&nbsp;coupled&nbsp;differential&nbsp;eq's<br>
+&nbsp;<br>
+Input:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;y:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Array&nbsp;containing&nbsp;the&nbsp;y(t)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;t:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Which&nbsp;time&nbsp;are&nbsp;we&nbsp;talking&nbsp;about?<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;h:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Stepsize<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;deriv:&nbsp;&nbsp;Function&nbsp;that&nbsp;returns&nbsp;an&nbsp;array<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;containing&nbsp;dy/dt&nbsp;for&nbsp;each&nbsp;y&nbsp;at&nbsp;time&nbsp;t,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;takes&nbsp;as&nbsp;arguments&nbsp;an&nbsp;y-array,&nbsp;and&nbsp;time&nbsp;t.</tt></dd></dl>
+
+<dl><dt><a name="pylib-rk4"><strong>rk4</strong></a>(self, y0, t0, te, N, deriv, filename<font color="#909090">=None</font>)</dt><dd><tt>General&nbsp;RK4&nbsp;driver&nbsp;for<br>
+N&nbsp;coupled&nbsp;differential&nbsp;eq's,<br>
+fixed&nbsp;stepsize<br>
+&nbsp;<br>
+Input:<br>
+&nbsp;-&nbsp;y0:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vector&nbsp;containing&nbsp;initial&nbsp;values&nbsp;for&nbsp;y<br>
+&nbsp;-&nbsp;t0:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Initial&nbsp;time<br>
+&nbsp;-&nbsp;te:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ending&nbsp;time<br>
+&nbsp;-&nbsp;N:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;steps<br>
+&nbsp;-&nbsp;deriv:&nbsp;&nbsp;&nbsp;&nbsp;See&nbsp;rk4_step<br>
+&nbsp;-&nbsp;filename:&nbsp;Optional,&nbsp;use&nbsp;if&nbsp;you&nbsp;want&nbsp;to&nbsp;write<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data&nbsp;to&nbsp;file&nbsp;at&nbsp;each&nbsp;step.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Format&nbsp;used:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t&nbsp;y[0]&nbsp;y[1]&nbsp;...&nbsp;(%10.15E)<br>
+&nbsp;<br>
+Output:<br>
+If&nbsp;filename=None,&nbsp;return&nbsp;tuple&nbsp;containing:<br>
+&nbsp;-&nbsp;time:&nbsp;&nbsp;Array&nbsp;of&nbsp;times&nbsp;at&nbsp;which&nbsp;it&nbsp;has&nbsp;iterated&nbsp;over<br>
+&nbsp;-&nbsp;yout:&nbsp;&nbsp;N*len(y0)&nbsp;numpy&nbsp;array&nbsp;containing&nbsp;y&nbsp;for&nbsp;each&nbsp;timestep<br>
+If&nbsp;filename&nbsp;specified,&nbsp;None&nbsp;is&nbsp;returned.</tt></dd></dl>
+
+<dl><dt><a name="pylib-rk4Adaptive"><strong>rk4Adaptive</strong></a>(self, y0, t0, te, h0, deriv, errorfunc, filename<font color="#909090">=None</font>)</dt><dd><tt>General&nbsp;RK4&nbsp;driver&nbsp;for<br>
+N&nbsp;coupled&nbsp;differential&nbsp;eq's,<br>
+adaptive&nbsp;stepsize.<br>
+&nbsp;<br>
+Inspired&nbsp;by&nbsp;Numerical&nbsp;Recipes,&nbsp;and<br>
+<a href="http://www.cofc.edu/lemesurierb/math545-2007/handouts/adaptive-runge-kutta.pdf">http://www.cofc.edu/lemesurierb/math545-2007/handouts/adaptive-runge-kutta.pdf</a><br>
+plus&nbsp;some&nbsp;of&nbsp;my&nbsp;own&nbsp;extras.<br>
+&nbsp;<br>
+Input:<br>
+&nbsp;-&nbsp;y0:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vector&nbsp;containing&nbsp;initial&nbsp;values&nbsp;for&nbsp;y<br>
+&nbsp;-&nbsp;t0:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Initial&nbsp;time<br>
+&nbsp;-&nbsp;te:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ending&nbsp;time<br>
+&nbsp;-&nbsp;h0:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Initial&nbsp;guess&nbsp;for&nbsp;stepsize&nbsp;h<br>
+&nbsp;-&nbsp;deriv:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;See&nbsp;<a href="#pylib-rk4_step">rk4_step</a>()<br>
+&nbsp;-&nbsp;errorfunc:&nbsp;Fuction&nbsp;that&nbsp;returns&nbsp;0.0&nbsp;if&nbsp;the&nbsp;step&nbsp;is&nbsp;accepted,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;else&nbsp;a&nbsp;returns&nbsp;the&nbsp;new&nbsp;stepsize<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Expects&nbsp;input&nbsp;yOld,&nbsp;yNew,&nbsp;yErr,&nbsp;h,&nbsp;and&nbsp;t<br>
+&nbsp;-&nbsp;filename:&nbsp;&nbsp;Optional,&nbsp;use&nbsp;if&nbsp;you&nbsp;want&nbsp;to&nbsp;write<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data&nbsp;to&nbsp;file&nbsp;at&nbsp;each&nbsp;step.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Format&nbsp;used:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t&nbsp;y[0]&nbsp;y[1]&nbsp;...&nbsp;(%10.15E)<br>
+&nbsp;<br>
+Output:<br>
+If&nbsp;filename=None,&nbsp;return&nbsp;tuple&nbsp;containing:<br>
+&nbsp;-&nbsp;time:&nbsp;&nbsp;Array&nbsp;of&nbsp;times&nbsp;at&nbsp;which&nbsp;it&nbsp;has&nbsp;iterated&nbsp;over<br>
+&nbsp;-&nbsp;yout:&nbsp;&nbsp;N*len(y0)&nbsp;numpy&nbsp;array&nbsp;containing&nbsp;y&nbsp;for&nbsp;each&nbsp;timestep<br>
+If&nbsp;filename&nbsp;specified,&nbsp;None&nbsp;is&nbsp;returned.</tt></dd></dl>
+
+<dl><dt><a name="pylib-rk4Adaptive_stepsizeControl1"><strong>rk4Adaptive_stepsizeControl1</strong></a>(self, yOld, yNew, yErr, h, t)</dt><dd><tt>Standard&nbsp;stepsize&nbsp;control&nbsp;algo&nbsp;for&nbsp;adaptive&nbsp;RK4.<br>
+This&nbsp;variety&nbsp;uses&nbsp;a&nbsp;fractional&nbsp;tolerance,<br>
+usefull&nbsp;for&nbsp;most&nbsp;problems&nbsp;that&nbsp;don't&nbsp;cross&nbsp;zero.<br>
+yTol&nbsp;should&nbsp;in&nbsp;this&nbsp;case&nbsp;be&nbsp;a&nbsp;number,&nbsp;and&nbsp;is&nbsp;interpreted<br>
+as&nbsp;an&nbsp;accuracy&nbsp;requirement&nbsp;epsilon.<br>
+&nbsp;<br>
+Also&nbsp;see&nbsp;<a href="#pylib-rk4Adaptive">rk4Adaptive</a>()&nbsp;and&nbsp;<a href="#pylib-rk4Adaptive_stepsizeControl1">rk4Adaptive_stepsizeControl1</a>()<br>
+&nbsp;<br>
+Please&nbsp;set&nbsp;the&nbsp;class&nbsp;variable&nbsp;<a href="#pylib">pylib</a>.yTol&nbsp;before&nbsp;use!</tt></dd></dl>
+
+<dl><dt><a name="pylib-rk4Adaptive_stepsizeControl2"><strong>rk4Adaptive_stepsizeControl2</strong></a>(self, yOld, yNew, yErr, h, t)</dt><dd><tt>Standard&nbsp;stepsize&nbsp;control&nbsp;algo&nbsp;for&nbsp;adaptive&nbsp;RK4.<br>
+This&nbsp;variety&nbsp;uses&nbsp;a&nbsp;fixed&nbsp;tolerance,&nbsp;usefull&nbsp;for&nbsp;oscilatory<br>
+problems.&nbsp;You&nbsp;should&nbsp;set&nbsp;yTol&nbsp;to&nbsp;something&nbsp;like<br>
+epsilon*yMax,&nbsp;where&nbsp;yMax&nbsp;isthe&nbsp;largest&nbsp;values&nbsp;you&nbsp;get,<br>
+and&nbsp;epsilon&nbsp;is&nbsp;the&nbsp;desired&nbsp;accuracy&nbsp;(say,&nbsp;10^-6).<br>
+&nbsp;<br>
+Also&nbsp;see&nbsp;<a href="#pylib-rk4Adaptive">rk4Adaptive</a>()&nbsp;and&nbsp;<a href="#pylib-rk4Adaptive_stepsizeControl2">rk4Adaptive_stepsizeControl2</a>()<br>
+&nbsp;<br>
+Please&nbsp;set&nbsp;the&nbsp;class&nbsp;variable&nbsp;<a href="#pylib">pylib</a>.yTol&nbsp;before&nbsp;use!</tt></dd></dl>
+
+<dl><dt><a name="pylib-rk4_step"><strong>rk4_step</strong></a>(self, y, t, h, deriv)</dt><dd><tt>General&nbsp;RK4&nbsp;stepper&nbsp;for<br>
+N&nbsp;coupled&nbsp;differential&nbsp;eq's<br>
+&nbsp;<br>
+Input:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;y:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Array&nbsp;containing&nbsp;the&nbsp;y(t)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;t:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Which&nbsp;time&nbsp;are&nbsp;we&nbsp;talking&nbsp;about?<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;h:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Stepsize<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;deriv:&nbsp;&nbsp;Function&nbsp;that&nbsp;returns&nbsp;an&nbsp;array<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;containing&nbsp;dy/dt&nbsp;for&nbsp;each&nbsp;y&nbsp;at&nbsp;time&nbsp;t,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;takes&nbsp;as&nbsp;arguments&nbsp;an&nbsp;y-array,&nbsp;and&nbsp;time&nbsp;t.</tt></dd></dl>
+
+<dl><dt><a name="pylib-sign"><strong>sign</strong></a>(self, a, b)</dt><dd><tt>Function&nbsp;which&nbsp;returns&nbsp;|a|&nbsp;*&nbsp;sgn(b).</tt></dd></dl>
+
+<dl><dt><a name="pylib-simpson"><strong>simpson</strong></a>(self, a, b, n, func)</dt><dd><tt>Same&nbsp;as&nbsp;trapezoidal,&nbsp;but&nbsp;use&nbsp;simpsons&nbsp;rule</tt></dd></dl>
+
+<dl><dt><a name="pylib-tqli"><strong>tqli</strong></a>(self, d, e, z)</dt><dd><tt>Function&nbsp;which&nbsp;finds&nbsp;the&nbsp;eigenvalues&nbsp;and&nbsp;eigenvectors&nbsp;of&nbsp;a&nbsp;tridiagonal&nbsp;symmetric<br>
+matrix.&nbsp;This&nbsp;is&nbsp;a&nbsp;translation&nbsp;of&nbsp;the&nbsp;function&nbsp;tqli&nbsp;in&nbsp;lib.cpp.&nbsp;<br>
+&nbsp;<br>
+Input:<br>
+-&nbsp;d:&nbsp;diagonal&nbsp;elements&nbsp;of&nbsp;the&nbsp;matrix<br>
+-&nbsp;e:&nbsp;off-diagonal&nbsp;elements&nbsp;of&nbsp;the&nbsp;matrix&nbsp;(first&nbsp;element&nbsp;is&nbsp;dummy)<br>
+-&nbsp;z:&nbsp;unit&nbsp;matrix&nbsp;(if&nbsp;eigenvectors&nbsp;of&nbsp;an&nbsp;"already&nbsp;tridiag"&nbsp;matrix&nbsp;wanted),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;matrix&nbsp;from&nbsp;<a href="#pylib-tred2">tred2</a>()&nbsp;if&nbsp;eigenvectors&nbsp;from&nbsp;a&nbsp;symetric&nbsp;matrix&nbsp;tridiagonalized&nbsp;by<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#pylib-tred2">tred2</a>()&nbsp;wanted.<br>
+&nbsp;<br>
+The&nbsp;elements&nbsp;of&nbsp;d&nbsp;after&nbsp;<a href="#pylib-tqli">tqli</a>()&nbsp;has&nbsp;finished&nbsp;are&nbsp;the&nbsp;eigenvalues&nbsp;of<br>
+the&nbsp;tridiagonal&nbsp;matrix.&nbsp;The&nbsp;eigenvectors&nbsp;are&nbsp;stored&nbsp;in&nbsp;z.</tt></dd></dl>
+
+<dl><dt><a name="pylib-tqli_cpp"><strong>tqli_cpp</strong></a>(self, d, e, n, z)</dt><dd><tt>C++&nbsp;backend&nbsp;for&nbsp;<a href="#pylib-tqli">tqli</a>(),&nbsp;using&nbsp;routine<br>
+in&nbsp;the&nbsp;library</tt></dd></dl>
+
+<dl><dt><a name="pylib-tqli_python"><strong>tqli_python</strong></a>(self, d, e, n, z)</dt><dd><tt>Python&nbsp;backend&nbsp;for&nbsp;<a href="#pylib-tqli">tqli</a>()</tt></dd></dl>
+
+<dl><dt><a name="pylib-trapezoidal"><strong>trapezoidal</strong></a>(self, a, b, n, func)</dt><dd><tt>Integrate&nbsp;the&nbsp;function&nbsp;func<br>
+using&nbsp;the&nbsp;trapezoidal&nbsp;rule&nbsp;from&nbsp;a&nbsp;to&nbsp;b,<br>
+with&nbsp;n&nbsp;points.&nbsp;Returns&nbsp;value&nbsp;from&nbsp;numerical&nbsp;integration</tt></dd></dl>
+
+<dl><dt><a name="pylib-tred2"><strong>tred2</strong></a>(self, A)</dt><dd><tt>Perform&nbsp;a&nbsp;Householder&nbsp;reduction&nbsp;of&nbsp;a&nbsp;real&nbsp;symetric&nbsp;matrix<br>
+to&nbsp;tridiagonal&nbsp;form.&nbsp;See&nbsp;Numerical&nbsp;recipes&nbsp;for&nbsp;more&nbsp;info!<br>
+&nbsp;<br>
+Input:<br>
+-&nbsp;A:&nbsp;NxN&nbsp;Numpy&nbsp;array&nbsp;containing&nbsp;the&nbsp;matrix&nbsp;to&nbsp;be&nbsp;tridiagonalized.&nbsp;Destroyed&nbsp;by&nbsp;<a href="#pylib-tred2">tred2</a>()!<br>
+&nbsp;<br>
+Output:<br>
+-&nbsp;d:&nbsp;Numpy&nbsp;array&nbsp;length&nbsp;N&nbsp;containing&nbsp;the&nbsp;diagonal&nbsp;elements&nbsp;of&nbsp;the&nbsp;tridiagonalized&nbsp;matrix<br>
+-&nbsp;e:&nbsp;Numpy&nbsp;array&nbsp;length&nbsp;N&nbsp;containing&nbsp;the&nbsp;off-diagonal&nbsp;elements&nbsp;of&nbsp;the&nbsp;tridiagonalized&nbsp;matrix<br>
+&nbsp;<br>
+-&nbsp;Input&nbsp;A&nbsp;is&nbsp;replaced&nbsp;by&nbsp;the&nbsp;orthogonal&nbsp;matrix&nbsp;effecting&nbsp;the&nbsp;transformation&nbsp;(NOT&nbsp;eigenvectors)<br>
+=&gt;&nbsp;BIG&nbsp;FAT&nbsp;WARNING!&nbsp;A&nbsp;destroyed.</tt></dd></dl>
+
+<dl><dt><a name="pylib-tred2_cpp"><strong>tred2_cpp</strong></a>(self, A, N, d, e)</dt><dd><tt>C++&nbsp;backend&nbsp;for&nbsp;tred2,&nbsp;using&nbsp;routine<br>
+in&nbsp;the&nbsp;library</tt></dd></dl>
+
+<dl><dt><a name="pylib-tred2_python"><strong>tred2_python</strong></a>(self, A, N, d, e)</dt><dd><tt>Python&nbsp;backend&nbsp;for&nbsp;tred2</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>ZERO</strong> = 1e-10</dl>
+
+<dl><dt><strong>guard</strong> = 0.94999999999999996</dl>
+
+<dl><dt><strong>yTol</strong> = None</dl>
+
+</td></tr></table></td></tr></table>
+</body></html>
