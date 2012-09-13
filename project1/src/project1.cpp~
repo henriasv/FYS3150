@@ -72,7 +72,7 @@ void vectorToFile(double *a, int N, string filename) {
 	for (int i = 0; i<N; i++) {
 		outfile->write((char*) &a[i], sizeof(double));
 	}
-	outfile->write((char*) &tmpnum, sizeof(double));
+	outfile ->write((char*) &tmpnum, sizeof(double));
 	outfile->close();
 }
 
