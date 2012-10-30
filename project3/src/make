@@ -1,0 +1,2 @@
+#! /bin/bash
+g++ -o main main.cpp /mn/felt/u8/henriasv/Dropbox/Henrik/Emner/FYS3150/FYS3150-code/lib/cppLibrary/lib.cpp -Wall -fopenmp

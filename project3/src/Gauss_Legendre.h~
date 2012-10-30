@@ -1,0 +1,3 @@
+class Gauss_Legendre:
+	public:
+	Gauss_Legendre::Gauss_Legendre(double N, double a, double b);
