@@ -1,0 +1,151 @@
+#include "/mn/felt/u8/henriasv/Dropbox/Henrik/Emner/FYS3150/FYS3150-code/lib/cppLibrary/lib.h"
+#include <cstdlib>
+#include <cmath>
+#include <omp.h>
+
+
+using namespace std;
+
+// function predefinitions
+double helium_function(double, double, double, double, double, double);
+double bruteForceGL(int N, double a, double b);
+double gammln(double);
+void gauss_laguerre(double *x, double *w, int n, double alf);
+
+int main(int argc, char** argv) {
+	double pi = 3.14159265358979;
+	cout << "hei" << endl;
+	int N = atoi(argv[1]);
+	double range = atof(argv[2]);
+	cout << "Mesh resolution " << N << endl;
+	double a = -range;
+	double b = range;
+	double brute_force_integral = bruteForceGL(N, a,b);
+	cout << "brute force solution " <<  brute_force_integral << endl;
+	cout << "analytic solution " << 5*pi*pi/16/16;
+	//double tmp = helium_function(1, 2, 3, 4, 5, 6);
+	//cout << tmp << endl;
+	return 0;
+}
+
+double helium_function_cartesian(double x1, double x2, double y1, double y2, double z1, double z2) {
+	double alpha = 2;
+	double r1r2 = sqrt((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2) + (z1-z2)*(z1-z2));
+	double exp1 = sqrt(x1*x1 + y1*y1 + z1*z1);
+	double exp2 = sqrt(x2*x2 + y2*y2 + z2*z2);
+	if (r1r2>1e-6) {
+	return exp(-2*alpha*(exp1+exp2))/r1r2;
+	} else return 0;
+}
+
+
+/**
+function bruteForceGL
+@param N - grid size
+@param a - lower limit of integration
+@param b - upper limit of integration
+
+@return - integral
+*/
+
+double bruteForceGL(int N, double a, double b) {
+	
+	int num_threads = 8;
+	double *integral = new double[num_threads];
+	double *x = new double[N];
+	double *w = new double[N];
+	// Setting up the weights and mesh. All dimensions use the same mesh.
+	gauleg(a, b, x, w, N);
+	
+#pragma omp parallel num_threads(num_threads)
+{
+#pragma omp for
+	// integration loop for six dimensional integral
+	for (int i = 0; i<N; i++) {
+	cout << "outer loop step " << i+1 << " / " << N << endl;
+	for (int j = 0; j<N; j++) {
+	for (int k = 0; k<N; k++) {
+	for (int l = 0; l<N; l++) {
+	for (int m = 0; m<N; m++) {
+	for (int n = 0; n<N; n++) {
+		integral[omp_get_thread_num()] += w[i]*w[j]*w[k]*w[l]*w[m]*w[n] * helium_function_cartesian(x[i], x[j], x[k], x[l], x[m], x[n]);
+		if (omp_get_thread_num() > num_threads) {
+			cout << "error in thread numbering!, quitting" << endl;
+			exit(1);
+		}
+	}}}}}}
+#pragma omp barrier
+}
+
+	double sum_integral = 0;
+	for (int i = 0; i<num_threads; i++) {
+		sum_integral += integral[i];
+	}
+	
+	return sum_integral;
+}
+
+#define EPS 3.0e-14
+#define MAXIT 10
+
+
+
+
+//  Note that you need to call it with a given value of alpha,
+// called alf here. This comes from x^{alpha} exp(-x)
+
+void gauss_laguerre(double *x, double *w, int n, double alf)
+{
+	int i,its,j;
+	double ai;
+	double p1,p2,p3,pp,z,z1;
+
+	for (i=1;i<=n;i++) {
+		if (i == 1) {
+			z=(1.0+alf)*(3.0+0.92*alf)/(1.0+2.4*n+1.8*alf);
+		} else if (i == 2) {
+			z += (15.0+6.25*alf)/(1.0+0.9*alf+2.5*n);
+		} else {
+			ai=i-2;
+			z += ((1.0+2.55*ai)/(1.9*ai)+1.26*ai*alf/
+				(1.0+3.5*ai))*(z-x[i-2])/(1.0+0.3*alf);
+		}
+		for (its=1;its<=MAXIT;its++) {
+			p1=1.0;
+			p2=0.0;
+			for (j=1;j<=n;j++) {
+				p3=p2;
+				p2=p1;
+				p1=((2*j-1+alf-z)*p2-(j-1+alf)*p3)/j;
+			}
+			pp=(n*p1-(n+alf)*p2)/z;
+			z1=z;
+			z=z1-p1/pp;
+			if (fabs(z-z1) <= EPS) break;
+		}
+		if (its > MAXIT) cout << "too many iterations in gaulag" << endl;
+		x[i]=z;
+		w[i] = -exp(gammln(alf+n)-gammln((double)n))/(pp*n*p2);
+	}
+}
+// end function gaulag
+
+double gammln( double xx)
+{
+	double x,y,tmp,ser;
+	static double cof[6]={76.18009172947146,-86.50532032941677,
+		24.01409824083091,-1.231739572450155,
+		0.1208650973866179e-2,-0.5395239384953e-5};
+	int j;
+
+	y=x=xx;
+	tmp=x+5.5;
+	tmp -= (x+0.5)*log(tmp);
+	ser=1.000000000190015;
+	for (j=0;j<=5;j++) ser += cof[j]/++y;
+	return -tmp+log(2.5066282746310005*ser/x);
+}
+
+// end function gammln
+#undef EPS
+#undef MAXIT

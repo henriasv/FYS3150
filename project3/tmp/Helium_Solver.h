@@ -1,0 +1,55 @@
+#ifndef HELIUM_SOLVER_H
+#define HELIUM_SOLVER_H
+
+class Helium_Solver {
+	public:
+		
+		// Constructor
+		Helium_Solver(int);
+
+		// Destructor
+		virtual ~Helium_Solver();
+
+		virtual double solve(int N_threads);
+		virtual double helium_function();
+
+		// attributes:
+		double alpha;
+		int N;
+		double *w;
+		double *x;
+		double *x_r;
+		double *w_r;
+		double *x_phi;
+		double *w_phi;
+		double *x_theta;
+		double *w_theta;
+};
+
+class Gauss_Legendre : public Helium_Solver {
+	public:
+		Gauss_Legendre(int N, double a, double b);
+
+	protected:
+		double solve(int);
+		double helium_function(double, double, double, double, double, double);
+};
+
+
+class Gauss_Laguerre : public Helium_Solver {
+	public:
+		/**
+		* N is the grid resolution, limit is the upper limit of integration on the r-axis.	
+		* Angles run from 0 to pi and 0 to 2pi
+		*/
+		Gauss_Laguerre(int N);
+	protected:
+		void gaulag(double *, double *, int, double);
+		double gammln(double);
+		double solve(int);
+		double helium_function(double, double, double, double, double, double);
+		double alph;
+	
+};
+
+#endif
