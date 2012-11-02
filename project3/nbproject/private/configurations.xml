@@ -24,18 +24,18 @@
       </nativedebugger>
       <runprofile version="9">
         <runcommandpicklist>
-          <runcommandpicklistitem>"${OUTPUT_PATH}" 15 5 gauleg /scratch/henriasv/FYS3150</runcommandpicklistitem>
-          <runcommandpicklistitem>"${OUTPUT_PATH}" 15 5 gauleg /scratch/henriasv/FYS3150/project3data</runcommandpicklistitem>
-          <runcommandpicklistitem>"${OUTPUT_PATH}" 15 5 gauleg /scratch/henriasv/FYS3150/project3data 8</runcommandpicklistitem>
-          <runcommandpicklistitem>"${OUTPUT_PATH}" 15 5 bf_mc /scratch/henriasv/FYS3150/project3data 8</runcommandpicklistitem>
-          <runcommandpicklistitem>"${OUTPUT_PATH}" 1000 5 bf_mc /scratch/henriasv/FYS3150/project3data 8</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}" 100000000 3 is_mc /scratch/henriasv/FYS3150/project3data 8</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}" 100000000 3 bf_mc /scratch/henriasv/FYS3150/project3data 8</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}" 100000000 5 bf_mc /scratch/henriasv/FYS3150/project3data 8</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}" 10000 5 bf_mc /scratch/henriasv/FYS3150/project3data 8</runcommandpicklistitem>
           <runcommandpicklistitem>"${OUTPUT_PATH}" 100000 5 bf_mc /scratch/henriasv/FYS3150/project3data 8</runcommandpicklistitem>
           <runcommandpicklistitem>"${OUTPUT_PATH}" 1000000 5 bf_mc /scratch/henriasv/FYS3150/project3data 8</runcommandpicklistitem>
-          <runcommandpicklistitem>"${OUTPUT_PATH}" 1e+4 5 bf_mc /scratch/henriasv/FYS3150/project3data 8</runcommandpicklistitem>
-          <runcommandpicklistitem>"${OUTPUT_PATH}" 1e4 5 bf_mc /scratch/henriasv/FYS3150/project3data 8</runcommandpicklistitem>
-          <runcommandpicklistitem>"${OUTPUT_PATH}" 10000 5 bf_mc /scratch/henriasv/FYS3150/project3data 8</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}" 1000000 3 bf_mc /scratch/henriasv/FYS3150/project3data 8</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}" 1000 3 bf_mc /scratch/henriasv/FYS3150/project3data 8</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}" 10000 3 bf_mc /scratch/henriasv/FYS3150/project3data 8</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}" 100000 3 bf_mc /scratch/henriasv/FYS3150/project3data 8</runcommandpicklistitem>
         </runcommandpicklist>
-        <runcommand>"${OUTPUT_PATH}" 10000 5 bf_mc /scratch/henriasv/FYS3150/project3data 8</runcommand>
+        <runcommand>"${OUTPUT_PATH}" 100000 3 bf_mc /scratch/henriasv/FYS3150/project3data 8</runcommand>
         <rundir></rundir>
         <buildfirst>true</buildfirst>
         <terminal-type>0</terminal-type>

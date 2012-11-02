@@ -8,9 +8,9 @@
 #include "Helium_Solver.h"
 
 
-Helium_Solver::Helium_Solver(int inN) {
+Helium_Solver::Helium_Solver(int _N) {
     	alpha = 2;
-	N = inN;
+	N = _N;
 }
 
 Helium_Solver::~Helium_Solver() {

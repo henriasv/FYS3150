@@ -18,7 +18,6 @@ public:
     virtual ~Bruteforce_MC();
     
     double l;
-    double *integrals;
 private:
 
 };

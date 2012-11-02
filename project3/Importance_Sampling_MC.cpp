@@ -56,11 +56,8 @@ double Importance_Sampling_MC::solve(int N_threads) {
     }
 #pragma omp critical
     {
-
-    for (int i = 0; i<N_threads; i++) {
-        integral += integrals[i];
+        integral += integrals[j];
         integral += tmpSum;
-    }
     }
     integral /= N;
     integral *= 2*2*2*PI*2*PI;

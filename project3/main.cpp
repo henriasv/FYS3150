@@ -26,7 +26,7 @@ double run_bruteforce_mc(double, int, int);
 double run_importance_sampling_mc(int N, int);
 
 /*
- * 
+ * Output from program is a binary files with two doubles: energy cpu_time
  */
 int main(int argc, char** argv) {
     cout << cos(1e-30) << endl;
@@ -41,33 +41,46 @@ int main(int argc, char** argv) {
     cout << "Running " << N_threads << " threads" << endl;
     
     ostringstream op; // output_path
-    op << argv[4] << "/" << "#method%" << method << "#N%" << N;
+    op << argv[4] << "/" << "#method%" << method << "#N%" << N << "#N_threads%" << N_threads;
     
-    
+    time_t start, stop;
     //running simulation
-    if (method.compare("gauleg") == 0) {
+    if (method.compare("gaulag") == 0) {
+        start = clock();
         integral = run_gaulag(N, N_threads);
+        stop = clock();
         op << "#range%" << range;
     }
-    else if (method.compare("gaulag") == 0)
+    else if (method.compare("gauleg") == 0) {
+        start = clock();
         integral = run_gauleg(N, a, b, N_threads);
+        stop = clock();
+    }
     else if (method.compare("bf_mc") == 0) {
+        start = clock();
         integral = run_bruteforce_mc(range, N, N_threads);
+        stop = clock();
         op << "#range%" << range;
     }
-    else if (method.compare("is_mc") == 0)
+    else if (method.compare("is_mc") == 0) {
+        start = clock();
         integral = run_importance_sampling_mc(N, N_threads);
+        stop = clock();
+    }
     else
         cout << "Provide integration method as argv[3]" << endl;
+    
+    double cpu_time = (double) (stop-start)/CLOCKS_PER_SEC;
     
     ostringstream mkdircmd;
     mkdircmd << "mkdir -p -v " << op.str();
     cout <<mkdircmd.str().c_str() <<endl;
     system(mkdircmd.str().c_str());
     
-    op << "/energy.bin";
+    op << "/output.bin";
     ofstream outfile = ofstream(op.str().c_str(), ios::out | ios::binary);
     outfile.write((char*) &integral, sizeof(double));
+    outfile.write((char*) &cpu_time, sizeof(double));
     
     return 0;
 }
