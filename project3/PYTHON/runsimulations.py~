@@ -23,7 +23,7 @@ for method in methods_dir:
 # monte carlo methods:
 
 methods_mc = ["bf_mc", "is_mc"]
-N_mc = ["%d" % 10**i for i in range(3, 10)];
+N_mc = ["%d" % 10**i for i in range(2, 3)];
 print N_mc
 ranges_mc = ["3"]
 

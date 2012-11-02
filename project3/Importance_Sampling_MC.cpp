@@ -32,6 +32,9 @@ double Importance_Sampling_MC::helium_function(double r1, double r2, double cos1
 
 double Importance_Sampling_MC::solve(int N_threads) {
     integrals = new double[N_threads];
+    for (int i = 0; i<N_threads; i++) {
+        integrals[i] = 0;
+    }
     double integral = 0;
     int j;
     long idum;
