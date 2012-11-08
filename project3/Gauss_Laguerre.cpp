@@ -23,15 +23,6 @@ Gauss_Laguerre::Gauss_Laguerre(int _N) : Helium_Solver(_N) {
 	gauleg(0, 2*PI, x_phi, w_phi, N);
 	gauleg(0, PI, x_theta, w_theta, N);
 	gaulag(x_r, w_r, N, alph);
-        
-        /*
-        for (int i = 0; i<N; i++) {
-            cout << x_phi[i] << " " << x_theta[i] << endl;
-            double x_tmp = x_theta[i];
-            x_theta[i] = cos(x_tmp);
-            w_theta[i] = sin(x_tmp)*w_theta[i];//w_theta[i] *PI/2*sin(x_tmp);//;sin(acos(x_theta[i])) *w_theta[i];
-        }
-        //*/
 }
 
 Gauss_Laguerre::~Gauss_Laguerre() {

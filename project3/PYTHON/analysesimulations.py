@@ -97,8 +97,6 @@ if __name__ == '__main__':
 		simulations.append(tmp)
 
 
-
-
 	################################################################
 	# Plots: 	Precision as a function of number of function evaluations for all methods
 	# 			cpu-time as a function of function evaluations for all methods
@@ -254,7 +252,13 @@ if __name__ == '__main__':
 	ylabel("Calculated energy")
 	title("Convergence of the different methods")
 	hold("off");
-
+	
+	print "Results with highest resolution for all methods"
+	print "Gauss Legendre: %.8f" % prec_gauleg[len(prec_gauleg)-1, 1], "Evaluations: %g" % prec_gauleg[len(prec_gauleg)-1, 0]
+	print "Gauss Laguerre: %.8f" % prec_gaulag[len(prec_gaulag)-1, 1], "Evaluations: %g" % prec_gaulag[len(prec_gaulag)-1, 0]
+	print "Brute force Monte Carlo: %.8f" % prec_bf_mc[len(prec_bf_mc)-1, 1], "Evaluations: %g" % prec_bf_mc[len(prec_bf_mc)-1, 0]
+	print "Importance sampling Monte Carlo %.8f" % prec_is_mc[len(prec_is_mc)-1, 1], "Evaluations: %g" % prec_is_mc[len(prec_is_mc)-1, 0]
+	print "Exact: ", "%.8f" % exact
 
 	raw_input("press enter")
 
