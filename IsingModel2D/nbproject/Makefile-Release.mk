@@ -35,7 +35,9 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/main.o
+	${OBJECTDIR}/_ext/558680977/lib.o \
+	${OBJECTDIR}/main.o \
+	${OBJECTDIR}/IsingLattice2D.o
 
 
 # C Compiler Flags
@@ -62,10 +64,20 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/isingmodel2d: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/isingmodel2d ${OBJECTFILES} ${LDLIBSOPTIONS} 
 
+${OBJECTDIR}/_ext/558680977/lib.o: ../lib/cppLibrary/lib.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/558680977
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/558680977/lib.o ../lib/cppLibrary/lib.cpp
+
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.cpp
+
+${OBJECTDIR}/IsingLattice2D.o: IsingLattice2D.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/IsingLattice2D.o IsingLattice2D.cpp
 
 # Subprojects
 .build-subprojects:

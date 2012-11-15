@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configurationDescriptor version="84">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="cppLibrary" displayName="cppLibrary" projectFiles="true">
+      <itemPath>../lib/cppLibrary/lib.cpp</itemPath>
+      <itemPath>../lib/cppLibrary/lib.h</itemPath>
+    </logicalFolder>
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
@@ -25,7 +29,12 @@
                    kind="IMPORTANT_FILES_FOLDER">
       <itemPath>Makefile</itemPath>
     </logicalFolder>
+    <itemPath>IsingLattice2D.cpp</itemPath>
+    <itemPath>IsingLattice2D.h</itemPath>
   </logicalFolder>
+  <sourceRootList>
+    <Elem>../lib/cppLibrary</Elem>
+  </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
     <conf name="Debug" type="1">
