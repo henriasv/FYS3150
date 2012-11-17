@@ -37,9 +37,6 @@ int main(int argc, char** argv) {
     for (int i = 0; i<n_mcs; i++) {
         lattice->Metropolis();
         lattice->output();
-        //if (i%(n_mcs/100) == 0)
-        //    cout << ((i*100)/n_mcs)+1 << " %" << endl;
-        //lattice->print();
     }
     lattice->close();
     return 0;

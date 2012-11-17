@@ -27,6 +27,14 @@ using namespace arma;
  */
 class IsingLattice2D {
 public:
+    /**
+     * There are parameters passed to this function that are not in use: num_cycles.
+     * The cycling is taken from outside, by calling th Metropolis function from global scope.
+     * @param _N
+     * @param T
+     * @param num_cycles
+     * @param rng_seed
+     */
     IsingLattice2D(int _N, double T, int num_cycles, long int rng_seed);
     virtual ~IsingLattice2D();
     void Metropolis();
