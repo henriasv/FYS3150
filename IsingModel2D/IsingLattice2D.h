@@ -45,8 +45,9 @@ public:
     void print();
     int randomSpin();
     int periodic(int);
-    void flipSpin(int, int);
+    void flipSpin(int, int, bool);
     void set_output_folder(string);
+    void close();
     
     /**
      * Output data to files. Folder has to be specified;

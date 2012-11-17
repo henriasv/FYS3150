@@ -1,0 +1,11 @@
+from scipy.stats import norm
+from scitools.easyviz.matplotlib_ import plot
+from numpy import linspace
+
+x = linspace(0.01, 0.99, 20)
+
+y = 0.12*norm.ppf(x) + 2.269
+
+plot(y)
+
+raw_input("press enter")

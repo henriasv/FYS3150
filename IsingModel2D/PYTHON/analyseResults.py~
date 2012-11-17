@@ -1,0 +1,212 @@
+import numpy as np
+from scitools.easyviz.matplotlib_ import plot, xlabel, ylabel, title, hold, figure, legend, hardcopy, semilogy
+import sys
+import os
+import re
+
+
+class Simulation:
+	def __init__(self, N, T, path):
+		self.N = N
+		self.T = T
+		self.nts = 1 # NUmber of thermalization steps
+		self.E = np.fromfile(path + "/E.bin")
+		self.Esq = np.fromfile(path + "/Esq.bin")
+		self.M = np.fromfile(path + "/M.bin")
+		self.Msq = np.fromfile(path + "/Msq.bin")
+		self.absM = np.fromfile(path + "/absM.bin")
+		self.n_mcs = len(self.E)
+
+	def set_thermalization(self, n):
+		self.nts = int(n*self.n_mcs)
+	
+	def calculate_properties(self):
+		self.E_mean = self.cum_mean(self.E)
+		self.E_end = self.E_mean[-1]
+		self.Esq = self.cum_mean(self.Esq)
+		self.Esq_end = self.Esq[-1]
+		self.M_mean = self.cum_mean(self.M)
+		self.M_end = self.M_mean[-1]
+		self.Msq_mean = self.cum_mean(self.Msq)
+		self.Msq_end = self.Msq_mean[-1]
+		self.absM_mean = self.cum_mean(self.absM)
+		self.absM_end = self.absM_mean[-1]
+		self.susceptibility = (self.Msq_end-self.absM_end**2)/self.T
+		self.heat_capacity = (self.Esq_end -self.E_end**2)/self.T/self.T
+
+		self.E_end = self.E_end/self.N/self.N
+		self.M_end = self.M_end/self.N/self.N
+		self.Esq_end = self.Esq_end/self.N/self.N
+		self.Msq_end = self.Msq_end/self.N/self.N
+		self.susceptibility = self.susceptibility/self.N/self.N
+		self.heat_capacity = self.heat_capacity/self.N/self.N
+		self.absM_end = self.absM_end/self.N/self.N
+
+		
+		
+		
+		if self.N == 2:
+			print "Energy for N=2, T=%f: %f" % (self.T, self.E_end)
+			print "Absolute magnetization for N=2, T=%f: %f" % (self.T, self.absM_end) 
+
+	
+	def plot_pe(self):
+		""" calculating number of entries with given energy"""
+		e_array = sorted(self.E[self.nts:])
+		pe_list = []
+		e_values = []
+		tmp_i = e_array[0]
+		counter = 0
+		for i in e_array:
+			if not i in e_values:
+				e_values.append(i)
+		e_values = sorted(e_values)
+
+		for i in range(len(e_values)):
+			counter = 0
+			for j in e_array:
+				if e_values[i] == j:
+					counter += 1
+			pe_list.append(counter)
+		semilogy(e_values, pe_list)
+
+
+	def plot_instantaneous(self):
+		plot(self.E)
+		xlabel("num_steps")
+		ylabel("instantaneous energy")
+
+	def plot_mean(self):
+		plot(self.E_mean)
+		hold('on')
+		#plot(self.absM_mean)
+		
+
+	def cum_mean(self, data):
+		return np.cumsum(data[self.nts:])/ \
+			np.linspace(1, self.n_mcs-self.nts, self.n_mcs-self.nts, endpoint=True)
+
+class SimulationEnsemble:
+	def __init__(self, path):
+		self.figurepath = "/mn/felt/u8/henriasv/Dropbox/Henrik/Emner/FYS3150/project4/figures/auto_figures/"
+		self.simulations = [];
+		self.path = path
+		self.patternN = r"N(d*)"
+		self.patternT = r"T(d\.d*)"
+
+	def load_tree(self):
+		for N_folder in os.listdir(self.path):
+			N_tmp = int(N_folder[1:])
+			print N_tmp
+			for T_folder in os.listdir(self.path + "/" + N_folder):
+				T_tmp = float(T_folder[1:])
+				self.simulations.append(Simulation(N_tmp, T_tmp, self.path + "/" + N_folder + "/" + T_folder))
+		for simulation in self.simulations:
+			simulation.set_thermalization(0.4)
+			simulation.calculate_properties()
+			#simulation.plot_mean()
+		print self.simulations
+	
+	def plot_energies(self, N):
+		figure()
+		for i in N:
+			T_list = []
+			E_list = []
+			for sim in self.simulations:	
+				if sim.N == i:
+					E_list.append(sim.E_end)
+					T_list.append(sim.T)
+			T_list, E_list = zip(*sorted(zip(T_list, E_list)))
+			plot(T_list, E_list, '-*', legend="N = %d" % i)
+			title("Energy as a function of temperature")
+			xlabel("$kT/J$")
+			ylabel("$E/J$")
+			hold('on')
+		hardcopy(self.figurepath + "energy.png")
+
+	def plot_absmag(self, N):
+		figure()
+		for i in N:
+			T_list = []
+			absM_list = []
+			for sim in self.simulations:	
+				if sim.N == i:
+					absM_list.append(sim.absM_end)
+					T_list.append(sim.T)
+			T_list, absM_list = zip(*sorted(zip(T_list, absM_list)))
+			plot(T_list, absM_list, '-*', legend="N = %d" % i)
+			title("Absolute magnetic moment as a function of temperature")
+			xlabel("$kT/J$")
+			ylabel("$|\mathcal{M}|$")
+			hold('on')
+		hardcopy(self.figurepath + "absmag.png")
+
+	def plot_susceptibility(self, N):
+		figure()
+		legends = []
+		for i in N:
+			T_list = []
+			su_list = []
+			#legends.append("N = %d" % i)
+			for sim in self.simulations:	
+				if sim.N == i:
+					su_list.append(sim.susceptibility)
+					T_list.append(sim.T)
+			T_list, su_list = zip(*sorted(zip(T_list, su_list)))
+			plot(T_list, su_list, '-*', legend="N = %d" % i)
+			title("Susceptibility as a function of temperature")
+			xlabel("$kT/J$")
+			ylabel("$\chi J$")
+			hold('on')
+		hardcopy(self.figurepath + "susceptibility.png")
+	
+	def plot_heat_capacity(self, N):
+		figure()
+		for i in N:
+			T_list = []
+			hc_list = []
+			for sim in self.simulations:	
+				if sim.N == i:
+					hc_list.append(sim.heat_capacity)
+					T_list.append(sim.T)
+			T_list, hc_list = zip(*sorted(zip(T_list, hc_list)))
+			plot(T_list, hc_list, '-*', legend="N = %d" % i)
+			xlabel("$kT/J$")
+			ylabel("$C_V/k$")
+			title("Heat capacity as a function of temperature")
+			hold('on')
+		hardcopy(self.figurepath + "heat_capacity.png")
+	
+	def plot_T(self):
+		None
+
+"""
+#########################
+# Plotting all the main results
+##########################
+path = "/scratch/henriasv/FYS3150/IsingModel3"
+
+sims = SimulationEnsemble(path)
+sims.load_tree()
+N = [20, 30, 40, 60, 80, 100]
+sims.plot_heat_capacity(N)#, 40, 60, 80, 100])
+sims.plot_susceptibility(N)
+sims.plot_absmag(N)
+sims.plot_energies(N)
+"""
+
+###########################
+# Plotting P(E) for L=20 an T = [1, 2.4]
+###########################
+sim = Simulation(20, 2.4, "/scratch/henriasv/FYS3150/IsingModel_once/N20/T2.4")
+sim.set_thermalization(0.2)
+sim.calculate_properties()
+sim.plot_pe()
+
+"""
+sim = Simulation(60, 1, path)
+sim.set_thermalization(0.2);
+sim.set_cumulative()
+sim.plot_mean();
+"""
+raw_input("press enter")
