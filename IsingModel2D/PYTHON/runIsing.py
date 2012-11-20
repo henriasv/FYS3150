@@ -11,8 +11,8 @@ if not (raw_input("sure?") == "yes"):
 
 path = "/mn/felt/u8/henriasv/Dropbox/Henrik/Emner/FYS3150/FYS3150-code/IsingModel2D/dist/Debug/GNU-Linux-x86/isingmodel2d";
 
-n_mcs = 100000
-N_values = [2, 20, 30]#[40, 60, 80, 100];
+n_mcs = 5*100000
+N_values = [2, 20, 30, 40, 60, 80, 100];
 T_values = 0.12*norm.ppf(linspace(0.01, 0.99, 20)) + 2.269
 
 def simulationsT(N_values, T):

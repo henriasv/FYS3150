@@ -17,7 +17,7 @@ using namespace std;
  */
 int main(int argc, char** argv) {
     ostringstream basepath;
-    basepath << "/scratch/henriasv/FYS3150/IsingModel_once/";
+    basepath << "/scratch/henriasv/FYS3150/IsingModel4/";
     int N = atoi(argv[1]);
     int n_mcs = atoi(argv[3]);
     int n_threads = 1;
@@ -32,7 +32,7 @@ int main(int argc, char** argv) {
     
     IsingLattice2D* lattice = new IsingLattice2D(N, T, n_threads, idum);
     lattice->set_output_folder(basepath.str());
-    lattice->initializeUp();
+    lattice->initializeRandom();
     lattice->print();
     for (int i = 0; i<n_mcs; i++) {
         lattice->Metropolis();

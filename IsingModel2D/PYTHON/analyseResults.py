@@ -1,5 +1,6 @@
 import numpy as np
-from scitools.easyviz.matplotlib_ import plot, xlabel, ylabel, title, hold, figure, legend, hardcopy, semilogy
+from scipy import stats
+from scitools.easyviz.matplotlib_ import plot, xlabel, ylabel, title, hold, figure, legend, hardcopy, semilogy, semilogx
 import sys
 import os
 import re
@@ -31,6 +32,7 @@ class Simulation:
 		self.Msq_end = self.Msq_mean[-1]
 		self.absM_mean = self.cum_mean(self.absM)
 		self.absM_end = self.absM_mean[-1]
+		self.var_E = self.Esq_end - self.E_end**2
 		self.susceptibility = (self.Msq_end-self.absM_end**2)/self.T
 		self.heat_capacity = (self.Esq_end -self.E_end**2)/self.T/self.T
 
@@ -68,17 +70,17 @@ class Simulation:
 				if e_values[i] == j:
 					counter += 1
 			pe_list.append(counter)
-		plot(e_values, pe_list)
+		semilogy(e_values, pe_list)
+		self.e_array = e_array
 
 
-	def plot_instantaneous(self):
-		plot(self.E)
-		xlabel("num_steps")
+	def plot_instantaneous(self, legstr=""):
+		semilogx(self.E, legend = legstr)
+		xlabel("num_{mcs}")
 		ylabel("instantaneous energy")
 
 	def plot_mean(self):
 		plot(self.E_mean)
-		hold('on')
 		#plot(self.absM_mean)
 		
 
@@ -93,6 +95,8 @@ class SimulationEnsemble:
 		self.path = path
 		self.patternN = r"N(d*)"
 		self.patternT = r"T(d\.d*)"
+		self.Tc = []
+		self.L = []
 
 	def load_tree(self):
 		for N_folder in os.listdir(self.path):
@@ -102,7 +106,7 @@ class SimulationEnsemble:
 				T_tmp = float(T_folder[1:])
 				self.simulations.append(Simulation(N_tmp, T_tmp, self.path + "/" + N_folder + "/" + T_folder))
 		for simulation in self.simulations:
-			simulation.set_thermalization(0.4)
+			simulation.set_thermalization(0.2)
 			simulation.calculate_properties()
 			#simulation.plot_mean()
 		print self.simulations
@@ -133,13 +137,32 @@ class SimulationEnsemble:
 				if sim.N == i:
 					absM_list.append(sim.absM_end)
 					T_list.append(sim.T)
+			T_diff = []			
 			T_list, absM_list = zip(*sorted(zip(T_list, absM_list)))
+			for j in range(len(T_list)-1):
+				T_diff.append((absM_list[j+1]-absM_list[j])/(T_list[j+1]-T_list[j-1]))
+			T_diff = abs(np.asarray(T_diff))			
+			index = T_diff.argmax()
+			self.Tc.append((T_list[index+1]+T_list[index])/2.0)
+			self.L.append(1./i)
 			plot(T_list, absM_list, '-*', legend="N = %d" % i)
 			title("Absolute magnetic moment as a function of temperature")
 			xlabel("$kT/J$")
 			ylabel("$|\mathcal{M}|$")
 			hold('on')
 		hardcopy(self.figurepath + "absmag.png")
+		slope, intercept, tmp1, tmp2, tmp3 = stats.linregress(self.L, self.Tc)
+		x = np.linspace(0, 0.05, 20)
+		y = intercept + slope*x
+		hold("off")
+		figure()
+		plot(self.L, self.Tc, '*', legend="Data points")
+		hold("on")
+		plot(x, y, legend="%f $L^{-1}$ + %f" %(slope, intercept))
+		xlabel("$1/L$")
+		ylabel("$kT_c/J$")
+		title("Calculated critical temperature")
+		hardcopy(self.figurepath + "calctc.png")
 
 	def plot_susceptibility(self, N):
 		figure()
@@ -180,11 +203,12 @@ class SimulationEnsemble:
 	def plot_T(self):
 		None
 
+figurepath = "/mn/felt/u8/henriasv/Dropbox/Henrik/Emner/FYS3150/project4/figures/auto_figures/"
 """
 #########################
 # Plotting all the main results
 ##########################
-path = "/scratch/henriasv/FYS3150/IsingModel3"
+path = "/scratch/henriasv/FYS3150/IsingModel4"
 
 sims = SimulationEnsemble(path)
 sims.load_tree()
@@ -202,7 +226,44 @@ sim = Simulation(20, 2.4, "/scratch/henriasv/FYS3150/IsingModel_once/N20/T2.4")
 sim.set_thermalization(0.2)
 sim.calculate_properties()
 sim.plot_pe()
+title("Probability density function for the energy at T=2.4 (not normalized)")
+xlabel("E")
+ylabel("Count")
+variance = stats.var(sim.e_array)
+print "variance = %f" % variance, sim.var_E
+hold("on")
+sim = Simulation(20, 1, "/scratch/henriasv/FYS3150/IsingModel_once/N20/T1")
+sim.set_thermalization(0.2)
+sim.calculate_properties()
+sim.plot_pe()
+title("Probability density function for the energy at T=1 (not normalized)")
+xlabel("E")
+ylabel("Count")
 
+"""
+###########################
+# Plotting convergence with ordered or random initialization for T = [1, 2.4]
+###########################
+# Random, T=1
+sim1 = Simulation(20, 1, "/scratch/henriasv/FYS3150/IsingModel_once_rand/N20/T1")
+sim1.calculate_properties()
+sim1.plot_instantaneous("Random initialization, T=1")
+hold('on')
+# Up T=1
+sim2 = Simulation(20, 2.4, "/scratch/henriasv/FYS3150/IsingModel_once/N20/T1")
+sim2.calculate_properties()
+sim2.plot_instantaneous("Ordered initialization, T=1")
+# Random T=2.4
+sim3 = Simulation(20, 2.4, "/scratch/henriasv/FYS3150/IsingModel_once_rand/N20/T2.4")
+sim3.calculate_properties()
+sim3.plot_instantaneous("Random initialization, T=2.4")
+# Up T=2.4
+sim4 = Simulation(20, 2.4, "/scratch/henriasv/FYS3150/IsingModel_once/N20/T2.4")
+sim4.calculate_properties()
+sim4.plot_instantaneous("Ordered initialization, T=2.4")
+title("Instantaneous energy for T=1 and T=2.4")
+hardcopy(figurepath + "convergence20.pdf")
+"""
 """
 sim = Simulation(60, 1, path)
 sim.set_thermalization(0.2);
